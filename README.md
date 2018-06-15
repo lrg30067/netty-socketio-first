@@ -81,6 +81,25 @@ server {
 
 ```
 
+- 5.启动脚本run_boot.sh一部分
+```sh
+Tag="NettySocketApplication2.0"
+App="netty-socketio-first-2.0.jar"
+#MainClass="com.sinovoice.hcicloud.nettysocketiofirst.NettySocketioFirstApplication"
+#Lib="/test/lib/"
+#使用springBoot的日志框架文件配置中的路径(/home/nettysocket/data/aicc/logs/foreignserver/log),需要新建好文件夹 
+#所以这里指定到/dev/null，但是这样子日志莫名奇妙的少了，就改成指定到固定文件 
+#Log="/home/nettysocket/data/aicc/logs/foreignserver/log/foreignserver-2018-05-30-0.log"
+echo $Tag
+RETVAL="0"
+```
+`./run_boot.sh start`
+`./run_boot.sh stop`
+`./run_boot.sh restart`
+`./run_boot.sh status`
+
+备注：可以自行修改APP为实际名称
+
 ##测试结果
 这里使用网上推荐的`websocket-bench`进行测试。可以参考
 [使用websocket-bench进行socket.io性能测试](https://blog.csdn.net/ljc82/article/details/78076106)
