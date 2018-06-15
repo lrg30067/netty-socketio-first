@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>page A</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="./css/ace/bootstrap.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="./css/ace/font-awesome.css">-->
+    <link rel="stylesheet" type="text/css" href="./css/button.css">
+
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
+</head>
+
+<script>
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    function wjyyvalue() {
+        var wjyy=GetQueryString("wjyy");
+        if(wjyy !=null && wjyy.toString().length>=1)
+        {
+            $("#wjyy").text(wjyy);
+        }
+    }
+    function fsrvalue() {
+        var fsr=GetQueryString("fsr");
+        if(fsr !=null && fsr.toString().length>=1)
+        {
+            $("#fsr").text(fsr);
+        }
+    }
+    function fwtdvalue() {
+        var fwtd=GetQueryString("fwtd");
+        if(fwtd !=null && fwtd.toString().length>=1)
+        {
+            $("#fwtd").text(fwtd);
+        }
+    }
+
+    function closeMessage() {
+        CD.CURRENT_SYSTEM = "PAGE-CM_VOICE";
+        var data1 = {
+            iframeId: "componentTipDiv"
+        }
+        var thisMesg = new Mesg("req", "COMM", "iframeClose", data1);
+        CD.sendMessage(thisMesg, window.top);
+    }
+
+    setTimeout("wjyyvalue()","10");
+    setTimeout("fsrvalue()","10");
+    setTimeout("fwtdvalue()","10");
+</script>
+
+<body>
+<div>
+    <!-- http://localhost:8080/pingan_sap/c.html?wjyy=5&fsr=2&fwtd=7 -->
+    <table>
+        <tr>
+            <td rowspan="4" width="20%"><img src='./images/i09.png' onclick="closeMessage()" /></td>
+            <td colspan="2" width="80%">您当前通话存在以下违规风险：</td>
+        </tr>
+        <tr>
+            <td><font>【违禁用语】</font></td>
+            <td ><a href="#" ><button id="wjyy" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+        </tr>
+        <tr>
+            <td><font>【防骚扰】</font></td>
+            <td ><a href="#" ><button id="fsr" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+        </tr>
+        <tr>
+            <td><font>【服务态度】</font></td>
+            <td ><a href="#" ><button id="fwtd" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+        </tr>
+    </table>
+
+
+</div>
+</body>
+</html>

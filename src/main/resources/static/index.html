@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SOCKET.IO DEMO</title>
+    <base>
+    <script src="../static/js/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/socket.io.js"></script>
+    <script src="https://cdn.bootcss.com/ckeditor/4.8.0/ckeditor.js"></script>
+    <style>
+        body {padding: 20px;}
+        #console {height: 450px;overflow: auto;}
+        .username-msg {color: orange;}
+        .connect-msg {color: green;}
+        .disconnect-msg {color: red;}
+    </style>
+</head>
+
+<body>
+<h1>测试聊天程序</h1>
+<div id="console" class="well"></div>
+<form class="well form-inline" onsubmit="return false;">
+    <input id="name" class="input-xlarge"  placeholder="用户名称. . . " />
+    <textarea id="msg" rows="10" cols="50" placeholder="发送内容. . . "></textarea>
+    <button type="button" onClick="sendMessage()" class="btn">发送</button>
+    <button type="button" onClick="sendDisconnect()" class="btn">离线</button>
+    <button type="button" onClick="reloadThis()" class="btn">上线</button>
+</form>
+</body>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace('msg');
+    editor.on("instanceReady", function () {
+        this.document.on("keydown", function () {
+            var event = window.frames[0].event;
+            if (event.ctrlKey && event.keyCode == 13) { // enter 键
+                //要做的事情
+                sendMessage();
+            }
+        });
+    });
+    var socket;
+    connect();
+
+    function connect() {
+        socket = io.connect('http://localhost:8003?myparam=testabc');
+        $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
+
+        socket.on('connect', function () {
+            console.log("连接成功");
+            serverOutput('<span class="connect-msg">欢迎光临!</span>');
+            socket.emit('chatevent', {
+                userId: 1,
+                userName: $("#name").val(),
+                receiveUserId: 2,
+                content: "已上线!"
+            });
+        });
+
+        socket.on('chatevent', function (data) {
+            output('<span class="username-msg">'+
+                data.userName + ' : </span>' +
+                data.content);
+        });
+
+        socket.on('disconnect', function () {
+            serverOutput('<span class="disconnect-msg">' + $("#name").val() + '已下线! </span>');
+        });
+
+        socket.on('connect_msg',function(data){
+            console.log('server reply connect:',data);
+        });
+
+        socket.on('notice_event',function(data){
+            serverOutput('<span class="disconnect-msg">' + $("#name").val() + '收到redis的消息! </span>');
+        });
+    }
+
+    function reloadThis() {
+        socket.disconnect();
+        connect();
+        console.log(socket);
+    }
+
+    function sendDisconnect() {
+        socket.emit('chatevent', {
+            userId: 1,
+            userName: $("#name").val(),
+            receiveUserId: 2,
+            content: "已下线!"
+        });
+        socket.disconnect();
+    }
+
+    function sendMessage() {
+        var userName = $("#name").val()
+        var message = editor.getData();
+        $('#msg').val('');
+        socket.emit('chatevent', {
+            userId: 1,
+            userName: userName,
+            receiveUserId: 2,
+            content: message
+        });
+    }
+
+    function output(message) {
+        var currentTime = "<span class='time' >" + new Date() + "</span>";
+        var element = $("<div>" + " " + message + "</div>");
+        $('#console').prepend(element);
+    }
+
+    function serverOutput(message) {
+        var element = $("<div>" + message + "</div>");
+        $('#console').prepend(element);
+    }
+
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+
+        if (event.ctrlKey && event.keyCode == 13) { // enter 键
+            sendMessage();
+        }
+    };
+
+    var str2utf8 = window.TextEncoder ? function(str) {
+        var encoder = new TextEncoder('utf8');
+        var bytes = encoder.encode(str);
+        var result = '';
+        for(var i = 0; i < bytes.length; ++i) {
+            result += String.fromCharCode(bytes[i]);
+        }
+        return result;
+    } : function(str) {
+        return eval('\''+encodeURI(str).replace(/%/gm, '\\x')+'\'');
+    }
+</script>
+
+</html>

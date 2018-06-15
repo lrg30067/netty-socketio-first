@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" id="html" style="font-size: 111.083px;">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>友空间-工具平台</title>
+    <!--网页图标-->
+    <link rel="shortcut icon" href="https://ec.yonyoucloud.com/front/images/circle_ico.ico">
+    <!--页面的样式-->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/team.css">
+    <link rel="stylesheet" type="text/css" href="select2/select2.min.css">
+
+    <style type="text/css">
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+        }
+        table{
+            border-collapse:collapse;
+            border-spacing:0;
+        }
+        fieldset, img{
+            border:0;
+        }
+        address,caption,cite,code,dfn,em,strong,th,var{
+            font-style:normal;
+            font-weight:400;
+        }
+        li{
+            list-style:none;
+        }
+        caption,th{
+            text-align:left;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-size:100%;
+            font-weight:400;
+        }
+        q:before,q:after{
+            content:'';
+        }
+        abbr,acronym{
+            border:0;
+            font-variant:normal;
+        }
+        sup{
+            vertical-align:text-top;
+        }
+        sub{
+            vertical-align:text-bottom;
+        }
+        input,textarea,select{
+            font-family:inherit;
+            font-weight:inherit;
+            font-size:100%;
+            line-height:1.2;
+            margin:0;
+        }
+        legend{
+            color:#000;
+        }
+        body{
+            background: #efefef;
+            font:14px/1.14 'Microsoft YaHei', 微软雅黑, STHeiti, SimSun, sans-serif, 'Open Sans', Arial;
+            color:#666;
+        }
+        .clearfix:after{
+            clear:both;
+            content:".";
+            display:block;
+            height:0;
+            line-height:0;
+            visibility:hidden;
+        }
+        .clearfix{
+            zoom:1;
+        }
+        #bd{
+            margin-top: 10px;
+            width: 980px;
+            margin: 20px auto;
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+        }
+        .mod-content {
+            padding: 10px;
+            font-size: 14px;
+            /*border-bottom: 1px solid #e1e1e1;*/
+        }
+        .mod-content:hover {
+            background: #f6f6f6;
+        }
+        .mod-content .content-title {
+            /*padding-left: 14px;*/
+            float: left;
+            width: 100%;
+            font-size: 16px;
+            padding-top: 7px;
+            font-weight: bolder;
+            overflow: hidden;
+            border-bottom: 2px solid #e1e1e1;
+            padding-bottom: 11px;
+        }
+        .mod-content .content-link {
+            float: left;
+            width: 1000px;
+            overflow: hidden;
+            padding-top: 14px;
+        }
+        .mod-content .content-link li {
+            width: 166px;
+            overflow: hidden;
+            height: 37px;
+            float: left;
+        }
+        .mod-content .content-link h3 {
+            width: 117px;
+            height: 36px;
+            line-height: 36px;
+            position: relative;
+            text-align: left;
+        }
+        #bd .content-link a{
+            color: #414549;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        #bd .content-link a:hover{
+            color: #fa4f52;
+        }
+        #ft{
+            text-align: center;
+            line-height: 2;
+            padding: 10px 0;
+            color: #a1a1a1;
+            font-size: 12px;
+            background: #f6f6f6;
+        }
+    </style>
+    <style type="text/css">
+    .select2-container .select2-selection--single{
+      height:34px;
+      line-height: 34px;
+    }
+</style>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <div class="banner">
+        <img class="bannerimg" src="./img/banner_bangong.jpg" alt="">
+
+        <div class="bannerinner">
+            <h3>工具平台</h3>
+            <h4></h4>
+
+
+            <select class="js-example-basic-single" name="state" style="width: 500px" >
+              <!--<option value="ALL"></option>-->
+              <option value="yongyoupingtai">用友平台</option>
+                    <option value="http://portal.yonyou.com/default.aspx">集团协同云</option>
+                    <option value="http://myvpn.yonyou.com/">远程办公</option>
+                    <option value="http://192.168.210.120/portal/">友报账</option>
+                    <option value="https://mail.yonyou.com:6443/index.php">用友电子邮局</option>
+                    <option value="http://app.yonyou.com/">用友移动应用</option>
+                    <option value="https://www.yonyoucloud.com/">用友云服务</option>
+                    <option value="http://dj.chaoke.com/">用友云商务</option>
+                    <option value="https://pub.esn.ren/html/demo.html">友空间体验</option>
+              <option value="guanligongju">管理工具</option>
+                    <option value="http://wiki.yonyou.com/spacedirectory/view.action">集团wiki</option>
+                    <option value="http://172.16.50.96/pages/viewpage.action?pageId=82717846">股份wiki</option>
+                    <option value="http://wiki.upesn.com/index.action">友空间wiki</option>
+                    <option value="http://runner.yyuap.com/documents/5">UAPrunnerWiki</option>
+                    <option value="http://125.35.5.232:8081/secure/Dashboard.jspa">云BG-JIRA</option>
+                    <option value="https://docs.zoho.com.cn/home#allfiles">docs.zoho</option>
+                    <option value="http://172.16.50.197:8080/issues/?filter=26553">UAP-JIRA</option>
+                    <option value="http://zt.upesn.com/index.php">友空间禅道</option>
+                    <option value="https://10.10.2.187/svn/ypmob/%e4%ba%a7%e5%93%81/8-%e8%b6%85%e5%ae%a2/">友空间SVN</option>
+                    <option value="https://www.pgyer.com/app/publish">蒲公英</option>
+                    <option value="http://pan.yonyou.com/web/login.html">用友云盘</option>
+                    <option value="https://portal.qiniu.com/bucket/tesn/resource#3">七牛云服务器</option>
+              <option value="ceshigongju">测试工具</option>
+                   <option value="http://tzg.chaoke.com:91/tangzg.html">友空间安装包下载</option>
+                   <option value="http://tzg.chaoke.com:91/tzg.html">友空间众测包下载</option>
+                   <option value="https://preview.yonyoucloud.com/data/test/2017/0613/20/200751_27133_JAtbgCi.png">友空间推广二维码</option>
+                   <option value="http://web.chaoke.com:91">测试环境</option>
+                   <option value="https://pub.esn.ren">预发布环境</option>
+                   <option value="https://ec.yonyoucloud.com/">线上环境</option>
+                   <option value="http://123.103.9.204:6063/account/home/welcome">ACL测试后台</option>
+                   <option value="https://acl-pub.esn.ren/" target="_blank">ACL预发布后台</option>
+                   <option value="https://acl.upesn.com/account/home/autologin">ACL线上后台</option>
+                   <option value="https://uastest.yyuap.com/apptenant/#/enterprise">租户中心后台</option>
+                   <option value="http://172.20.1.177/clear_mobile.php?mobile=">友空间91清手机号数据</option>
+                   <option value="http://172.20.1.177:30303/">Rpc test tool查询返回</option>
+                   <option value="http://172.20.1.177:15672/#/queues">监控广播消费</option>
+                   <option value="http://www.bejson.com/">JSON格式校验</option>
+                   <option value="https://mall.tubiaoxiu.com/templates">图标秀</option>
+                   <option value="https://cli.im/">二维码生成器</option>
+                   <option value="http://tzg.chaoke.com:91/mobile.png">机型列表</option>
+                   <option value="http://tzg.chaoke.com:91/operation.png">对接列表</option>
+              <option value="zidonghuagongju">自动化工具</option>
+                   <option value="http://ci.yonyou.com/jenkins/login?from=%2Fjenkins">移动端自动构建平台</option>
+                   <option value="http://jk.esn.ren:91/view/%E7%A9%BA%E9%97%B4%E6%B5%8B%E8%AF%95-91%E7%8E%AF%E5%A2%83/">Web端自动构建平台</option>
+                   <option value="https://runner.yonyoucloud.com/index.html">性能自动化</option>
+                   <option value="http://10.11.66.47/users/sign_in">空间自动化服务1</option>
+                   <option value="http://172.20.13.10/cloudtest/index.html#boot_testreport/testreport">用友云测平台</option>
+                   <option value="https://www.testin.cn/portal.action?op=Portal.index">Testin云测</option>
+                   <option value="http://utest.21kunpeng.com/">腾讯优测云真机</option>
+                   <option value="https://mqc.aliyun.com/?spm=a2c0i.10714785.1999348069.1.67f4c056BJ6gjp">阿里测试工具</option>
+                   <option value="http://qa.sogou.com/">搜狗测试工具</option>
+                   <option value="http://mqc.yunos.com/download.htm?spm=a2c0i.7764369.1999348069.22.bIoadf">网易测试工具</option>
+                   <option value="http://ie.sogou.com/app/search/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7">浏览器扩展工具</option>
+              <option value="jiankonggongju">监控工具</option>
+                   <option value="https://op.upesn.com/">友空间数据平台</option>
+                   <!--<option value="https://apiadmin.upesn.com/">应用层日志管理中心</option>-->
+                   <option value="http://172.20.1.177:55757/?fn=source&service=WorkerMan">服务层YServer-集群统计与监控</option>
+                   <option value="https://bugly.qq.com/v2/index">友空间bugly</option>
+                   <option value="https://mtj.baidu.com/web/welcome/login">友空间百度统计</option>
+                   <option value="https://euc.yonyoucloud.com/cas/login">友云音</option>
+              <option value="anquangongju">安全工具</option>
+                   <option value="http://172.16.51.206/">SonarQube扫描代码静态</option>
+                   <option value="http://www.ijiami.cn/apply/Detect">爱加密</option>
+                   <option value="https://passport.bangcle.com/users/userlogin?fromsite=dev&backurl=http%3A%2F%2Fdev.bangcle.com%2Fapps%2Findex">梆梆安全</option>
+                   <option value="http://appscan.360.cn/app/c54037f80799dea91d64d5c1927477de/report/">显危镜</option>
+                   <option value="http://jaq.alibaba.com/gc/appsec/app_scan_risk_summary.htm?itemId=598a0be4-2d6d-40b3-a4ed-6a864cf68a2a&spm=a313e.7913627.11111111.2.4dd6ed8hNX1Qj">聚安全</option>
+                   <option value="https://service.security.tencent.com/kingkong">金刚</option>
+                   <option value="http://mtc.baidu.com/site/app?from=22-FromDaoHang_7-MTC_8-Manual#safe">百度安全</option>
+              <option value="youkongjianfaban">友空间发版</option>
+                   <option value="https://itunesconnect.apple.com/">苹果应用市场</option>
+                   <option value="http://open.qq.com/login?from=http%3A%2F%2Fop.open.qq.com%2F">应用宝市场</option>
+                   <option value="http://open.wandoujia.com/app/255715/edit">豌豆荚市场</option>
+                   <option value="http://dev.360.cn/">360市场</option>
+                   <option value="https://dev.mi.com/console/">小米市场</option>
+                   <option value="http://developer.huawei.com/consumer/cn/devunion/openPlatform/html/memberCenter.html#appManage#">华为市场</option>
+                   <option value="http://app.baidu.com/">百度市场</option>
+              <option value="xuexiziliao">学习资料</option>
+                   <option value="https://jspatch.com/Index/login">JSPatch-iOS APP热修复</option>
+                   <option value="https://open.weixin.qq.com/cgi-bin/index?t=home/index&lang=zh_CN&token=6ecd7410b00b85d51cfa1c44f0fa2b6e9903865e">微信开放平台</option>
+                   <option value="http://www.w3school.com.cn/">w3school 在线教程</option>
+                   <option value="http://www.runoob.com/">菜鸟教程</option>
+                   <option value="http://ueditor.baidu.com/website/index.html">第三方插件</option>
+                   <option value="http://www.berlinix.com/it/it.php">IT基础</option>
+                   <option value="http://www.testtao.com/portal.php">测试之道</option>
+                   <option value="http://bbs.51testing.com/forum.php">51testing</option>
+                   <option value="http://www.51testing.com">51测试工具</option>
+                   <option value="http://www.berlinix.com/it/gitflow.php">分支管理模型</option>
+              <option value="qitagongju">其他工具</option>
+                   <option value="http://jmeter.apache.org/">JMeter</option>
+                   <option value="http://httpd.apache.org/docs/2.2/programs/ab.html">ApacheBench</option>
+                   <option value="http://www.abtester.cn/">ABTester</option>
+                   <option value="https://www.mturk.com/mturk/welcome">Amzon Mturk</option>
+                   <option value="http://abtests.de/">A/B Testing</option>
+                   <option value="http://www.google.com/analytics/features/content.html">Google Analytics Content Experiments</option>
+                   <option value="https://github.com/gregdingle/genetify/wiki">Genetify</option>
+                   <option value="http://www.kameleoon.com/">Kameleoon</option>
+                   <option value="https://www.optimizely.com/">Optimizely</option>
+                   <option value="https://github.com/seatgeek/sixpack">Sixpack</option>
+                   <option value="http://drpete.co/split-test-calculator">Split Test</option>
+                   <option value="http://vanity.labnotes.org/">Vanity</option>
+                   <option value="http://www.bingocardcreator.com/abingo">A/Bingo</option>
+                   <option value="https://usabilityhub.com">Usabilityhub</option>
+                   <option value="https://www.hellobar.com/">Hello Bar</option>
+                   <option value="http://i.amap.com/">高德指数</option>
+                   <option value="http://www.convert.com/">Convert</option>
+                   <option value="http://www.crazyegg.com/#.">Crazy Egg</option>
+                   <option value="http://www.kameleoon.com/en/pricing.html">Kameleoon</option>
+                   <option value="http://www.hubspot.com/pricing">Hubspot</option>
+                   <option value="https://www.optimizely.com/">Optimizely Enterprise</option>
+                   <option value="https://vwo.com/">Vwo</option>
+                   <option value="https://splitforce.com/">Splitforce</option>
+                   <option value="http://unbounce.com/">Unbounce</option>
+                   <option value="https://usabilityhub.com/pricing">Usabilityhub</option>
+                   <option value="http://www.vertster.com/">Vertster</option>
+                   <option value="https://www.kissmetrics.com/">KISSmetrics</option>
+                   <option value="http://www.appadhoc.com">AppAdhoc A/B Testing</option>
+                   <option value="http://www.appadhoc.com/">吆喝科技</option>
+            </select>
+
+            <a style="margin-left: 10px;margin-top: 2px;position:  absolute;" id="search">
+                <div class="experiencebtn">
+                    Search
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--div开始-->
+    <div class="synergy">
+        <div id="bd">
+            <div class="mod-content clearfix" id="yongyoupingtai">
+            <div class="content-con content-con-first">
+                <h2 class="content-title clearfix">用友平台<span class="content-title-des"></span></h2>
+                <ul class="content-link">
+                        <li>
+                          <h3><div><a href="http://portal.yonyou.com/default.aspx" target="_blank" class="text-con" _itemid="2" title="集团协同云">集团协同云</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="http://myvpn.yonyou.com/" target="_blank" class="text-con" _itemid="5" title="远程办公">远程办公</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="http://192.168.210.120/portal/" target="_blank" class="text-con" _itemid="1" title="友报账">友报账</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="https://mail.yonyou.com:6443/index.php" target="_blank" class="text-con" _itemid="3" title="用友电子邮局">用友电子邮局</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="http://app.yonyou.com/" target="_blank" class="text-con" _itemid="4" title="用友移动应用">用友移动应用</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="https://www.yonyoucloud.com/" target="_blank" class="text-con" _itemid="4" title="用友云服务">用友云服务</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="http://dj.chaoke.com/" target="_blank" class="text-con" _itemid="4" title="用友云商务">用友云商务</a></div></h3>
+                        </li>
+                        <li>
+                          <h3><div><a href="https://pub.esn.ren/html/demo.html" target="_blank" class="text-con" _itemid="4" title="友空间体验">友空间体验</a></div></h3>
+                        </li>
+                             </ul>
+            </div>
+            </div>
+            <div class="mod-content clearfix" id="guanligongju">
+                <div class="content-con ">
+                    <h2 class="content-title">管理工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="http://wiki.yonyou.com/spacedirectory/view.action" target="_blank" class="text-con" _itemid="9" title="集团wiki">集团wiki</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://172.16.50.96/pages/viewpage.action?pageId=82717846" target="_blank" class="text-con" _itemid="10" title="股份wiki">股份wiki</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://wiki.upesn.com/index.action" target="_blank" class="text-con" _itemid="10" title="友空间wiki">友空间wiki</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://runner.yyuap.com/documents/5" target="_blank" class="text-con" _itemid="10" title="UAPrunnerWiki">UAPrunnerWiki</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://125.35.5.232:8081/secure/Dashboard.jspa" target="_blank" class="text-con" _itemid="11" title="云BG-JIRA">云BG-JIRA</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://docs.zoho.com.cn/home#allfiles" target="_blank" class="text-con" _itemid="1903" title="docs.zoho 274723170@qq.com 11111111">docs.zoho 274723170@qq.com 11111111</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://172.16.50.197:8080/issues/?filter=26553" target="_blank" class="text-con" _itemid="12" title="UAP-JIRA">UAP-JIRA</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://zt.upesn.com/index.php" target="_blank" class="text-con" _itemid="13" title="友空间禅道">友空间禅道</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://10.10.2.187/svn/ypmob/%e4%ba%a7%e5%93%81/8-%e8%b6%85%e5%ae%a2/" target="_blank" class="text-con" _itemid="1903" title="友空间SVN">友空间SVN</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://www.pgyer.com/app/publish" target="_blank" class="text-con" _itemid="1903" title="蒲公英 274723170@qq.com yonyou 91:mazhhc@yonyou.com mzh123456!@# beta:lzking@foxmail.com yonyou">蒲公英 274723170@qq.com yonyou 91:mazhhc@yonyou.com mzh123456!@# beta:lzking@foxmail.com yonyou</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://pan.yonyou.com/web/login.html" target="_blank" class="text-con" _itemid="1903" title="用友云盘">用友云盘</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://portal.qiniu.com/bucket/tesn/resource#3" target="_blank" class="text-con" _itemid="1903" title="七牛云服务器">七牛云服务器</a></div></h3>
+                            </li>
+                                </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="ceshigongju">
+                <div class="content-con ">
+                    <h2 class="content-title">测试工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="http://tzg.chaoke.com:91/tangzg.html" target="_blank" class="text-con" _itemid="14" title="友空间安装包下载">友空间安装包下载</a></div></h3>
+                            </li>
+                                <li>
+                              <h3><div><a href="http://tzg.chaoke.com:91/tzg.html" target="_blank" class="text-con" _itemid="14" title="友空间众测包下载">友空间众测包下载</a></div></h3>
+                            </li>
+                    <li>
+                              <h3><div><a href="https://preview.yonyoucloud.com/data/test/2017/0613/20/200751_27133_JAtbgCi.png" target="_blank" class="text-con" _itemid="14" title="友空间推广二维码">友空间推广二维码</a></div></h3>
+                            </li>
+                       <li>
+                              <h3><div><a href="http://web.chaoke.com:91" target="_blank" class="text-con" _itemid="14" title="测试环境">测试环境</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://pub.esn.ren" target="_blank" class="text-con" _itemid="14" title="预发布环境">预发布环境</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://ec.yonyoucloud.com/" target="_blank" class="text-con" _itemid="14" title="线上环境">线上环境</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://123.103.9.204:6063/account/home/welcome" target="_blank" class="text-con" _itemid="14" title="ACL测试后台">ACL测试后台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://acl-pub.esn.ren/" target="_blank" class="text-con" _itemid="14" title="ACL预发布后台">ACL预发布后台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://acl.upesn.com/account/home/autologin" target="_blank" class="text-con" _itemid="14" title="ACL线上后台">ACL线上后台</a></div></h3>
+                            </li>
+                           <!-- <li>
+                              <h3><div><a href="http://camp.upesn.com/camp/admincamp/login;jsessionid=92BD90C427FE29159EC9C1AB7B6EEB68" target="_blank" class="text-con" _itemid="14">夏令营大会后台</a></div></h3>
+                            </li>-->
+                       <li>
+                              <h3><div><a href="https://uastest.yyuap.com/apptenant/#/enterprise" target="_blank" class="text-con" _itemid="14" title="租户中心后台">租户中心后台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://172.20.1.177/clear_mobile.php?mobile=" target="_blank" class="text-con" _itemid="1903" title="友空间91清手机号数据">友空间91清手机号数据</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://172.20.1.177:30303/" target="_blank" class="text-con" _itemid="14" title="Rpc test tool查询返回">Rpc test tool查询返回</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://172.20.1.177:15672/#/queues" target="_blank" class="text-con" _itemid="555" title="监控广播消费esnmq wE2Ew0wwGS">监控广播消费esnmq wE2Ew0wwGS<span style="color:red;">新</span></a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.bejson.com/" target="_blank" class="text-con" _itemid="1903" title="JSON格式校验">JSON格式校验</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://mall.tubiaoxiu.com/templates" target="_blank" class="text-con" _itemid="1903" title="图标秀">图标秀</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://cli.im/" target="_blank" class="text-con" _itemid="1903" title="二维码生成器">二维码生成器</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://tzg.chaoke.com:91/mobile.png" target="_blank" class="text-con" _itemid="1903" title="机型列表">机型列表</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://tzg.chaoke.com:91/operation.png" target="_blank" class="text-con" _itemid="1903" title="对接列表">对接列表</a></div></h3>
+                            </li>
+                                    </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="zidonghuagongju">
+                <div class="content-con ">
+                    <h2 class="content-title">自动化工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="http://ci.yonyou.com/jenkins/login?from=%2Fjenkins" target="_blank" class="text-con" _itemid="14" title="移动端自动构建平台">移动端自动构建平台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://jk.esn.ren:91/view/%E7%A9%BA%E9%97%B4%E6%B5%8B%E8%AF%95-91%E7%8E%AF%E5%A2%83/" target="_blank" class="text-con" _itemid="14" title="Web端自动构建平台">Web端自动构建平台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://runner.yonyoucloud.com/index.html" target="_blank" class="text-con" _itemid="1903" title="性能自动化">性能自动化</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://10.11.66.47/users/sign_in" target="_blank" class="text-con" _itemid="1903" title="空间自动化服务1">空间自动化服务1</a></div></h3>
+                            </li>
+                          <!--  <li>
+                              <h3><div><a href="http://10.4.111.25:8080/" target="_blank" class="text-con" _itemid="1903" title="空间自动化服务2">空间自动化服务2</a></div></h3>
+                            </li>-->
+                            <li>
+                              <h3><div><a href="http://172.20.13.10/cloudtest/index.html#boot_testreport/testreport" target="_blank" class="text-con" _itemid="1903" title="用友云测平台">用友云测平台</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://mtc.baidu.com/mymtc/tasks" target="_blank" class="text-con" _itemid="1903" title="百度云测">百度云测</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://www.testin.cn/portal.action?op=Portal.index" target="_blank" class="text-con" _itemid="1903" title="Testin云测">Testin云测</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://utest.21kunpeng.com/" target="_blank" class="text-con" _itemid="1903" title="腾讯优测云真机">腾讯优测云真机</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://mqc.aliyun.com/?spm=a2c0i.10714785.1999348069.1.67f4c056BJ6gjp" target="_blank" class="text-con" _itemid="1903" title="阿里测试工具">阿里测试工具</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://qa.sogou.com/" target="_blank" class="text-con" _itemid="1903" title="搜狗测试工具">搜狗测试工具</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://mqc.yunos.com/download.htm?spm=a2c0i.7764369.1999348069.22.bIoadf" target="_blank" class="text-con" _itemid="1903" title="网易测试工具">网易测试工具</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://ie.sogou.com/app/search/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7" target="_blank" class="text-con" _itemid="1903" title="浏览器扩展工具">浏览器扩展工具</a></div></h3>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="jiankonggongju">
+                <div class="content-con ">
+                    <h2 class="content-title">监控工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="https://op.upesn.com/" target="_blank" class="text-con" _itemid="6" title="友空间数据平台">友空间数据平台</a></div></h3>
+                            </li>
+                          <!--  <li>
+                              <h3><div><a href="https://apiadmin.upesn.com/" target="_blank" class="text-con" _itemid="7" title="应用层日志管理中心">应用层日志管理中心</a></div></h3>
+                            </li>-->
+                            <li>
+                              <h3><div><a href="http://172.20.1.177:55757/?fn=source&service=WorkerMan" target="_blank" class="text-con" _itemid="8" title="服务层YServer-集群统计与监控esn_admin 123456">服务层YServer-集群统计与监控esn_admin 123456</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://bugly.qq.com/v2/index" target="_blank" class="text-con" _itemid="1903" title="友空间bugly">友空间bugly</a></div></h3>
+                            </li>
+                           <!-- <li>
+                              <h3><div><a href="http://api.upesn.com/rest/NLErrorlog/searchLog?type=android&member_id=&limit=10" target="_blank" class="text-con" _itemid="1903" title="友空间崩溃统计">友空间崩溃统计</a></div></h3>
+                            </li>-->
+                            <li>
+                              <h3><div><a href="https://mtj.baidu.com/web/welcome/login" target="_blank" class="text-con" _itemid="1903" title="友空间百度统计">友空间百度统计</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://euc.yonyoucloud.com/cas/login" target="_blank" class="text-con" _itemid="1903" title="友云音">友云音</a></div></h3>
+                            </li>
+                                </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="anquangongju">
+                <div class="content-con ">
+                    <h2 class="content-title">安全工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="http://172.16.51.206/" target="_blank" class="text-con" _itemid="1903" title="SonarQube扫描代码静态 Socicollab Socicollab">SonarQube扫描代码静态 Socicollab Socicollab</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.ijiami.cn/apply/Detect" target="_blank" class="text-con" _itemid="6" title="爱加密">爱加密</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://passport.bangcle.com/users/userlogin?fromsite=dev&backurl=http%3A%2F%2Fdev.bangcle.com%2Fapps%2Findex" target="_blank" class="text-con" _itemid="7" title="梆梆安全">梆梆安全</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://appscan.360.cn/app/c54037f80799dea91d64d5c1927477de/report/" target="_blank" class="text-con" _itemid="8" title="显危镜">显危镜</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://jaq.alibaba.com/gc/appsec/app_scan_risk_summary.htm?itemId=598a0be4-2d6d-40b3-a4ed-6a864cf68a2a&spm=a313e.7913627.11111111.2.4dd6ed8hNX1Qj" target="_blank" class="text-con" _itemid="1903" title="聚安全">聚安全</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://service.security.tencent.com/kingkong" target="_blank" class="text-con" _itemid="1903" title="金刚">金刚</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://mtc.baidu.com/site/app?from=22-FromDaoHang_7-MTC_8-Manual#safe" target="_blank" class="text-con" _itemid="1903" title="百度安全">百度安全</a></div></h3>
+                            </li>
+                                </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="youkongjianfaban">
+                <div class="content-con content-con-first">
+                    <h2 class="content-title">友空间发版<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="https://itunesconnect.apple.com/" target="_blank" class="text-con" _itemid="14" title="苹果应用市场">苹果应用市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://open.qq.com/login?from=http%3A%2F%2Fop.open.qq.com%2F" target="_blank" class="text-con" _itemid="14" title="应用宝市场">应用宝市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://open.wandoujia.com/app/255715/edit" target="_blank" class="text-con" _itemid="14" title="豌豆荚市场">豌豆荚市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://dev.360.cn/" target="_blank" class="text-con" _itemid="14" title="360市场">360市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://dev.mi.com/console/" target="_blank" class="text-con" _itemid="14" title="小米市场">小米市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://developer.huawei.com/consumer/cn/devunion/openPlatform/html/memberCenter.html#appManage#" target="_blank" class="text-con" _itemid="14" title="华为市场">华为市场</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://app.baidu.com/" target="_blank" class="text-con" _itemid="14" title=">百度市场">百度市场</a></div></h3>
+                            </li>
+                                </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="xuexiziliao">
+                <div class="content-con ">
+                    <h2 class="content-title">学习资料<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                            <li>
+                              <h3><div><a href="https://jspatch.com/Index/login" target="_blank" class="text-con" _itemid="1903" title="JSPatch-iOS APP热修复 80937120@qq.com 80937120 appstore@yonyou.com yidongyingyong">JSPatch-iOS APP热修复 80937120@qq.com 80937120 appstore@yonyou.com yidongyingyong</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="https://open.weixin.qq.com/cgi-bin/index?t=home/index&lang=zh_CN&token=6ecd7410b00b85d51cfa1c44f0fa2b6e9903865e" target="_blank" class="text-con" _itemid="1903" title="微信开放平台">微信开放平台</a></div></h3>
+                            </li>
+
+                            <li>
+                              <h3><div><a href="http://www.w3school.com.cn/" target="_blank" class="text-con" _itemid="1903" title="w3school 在线教程">w3school 在线教程</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.runoob.com/" target="_blank" class="text-con" _itemid="1903" title="菜鸟教程">菜鸟教程</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://ueditor.baidu.com/website/index.html" target="_blank" class="text-con" _itemid="1903" title="第三方插件">第三方插件</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.berlinix.com/it/it.php" target="_blank" class="text-con" _itemid="1903" title="IT基础">IT基础</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.testtao.com/portal.php" target="_blank" class="text-con" _itemid="1903" title="测试之道">测试之道</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://bbs.51testing.com/forum.php" target="_blank" class="text-con" _itemid="1903" title="51testing">51testing</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.51testing.com" target="_blank" class="text-con" _itemid="1903" title="51测试工具">51测试工具</a></div></h3>
+                            </li>
+                            <li>
+                              <h3><div><a href="http://www.berlinix.com/it/gitflow.php" target="_blank" class="text-con" _itemid="1903" title="分支管理模型">分支管理模型</a></div></h3>
+                            </li>
+                                </ul>
+                </div>
+            </div>
+            <div class="mod-content clearfix" id="qitagongju">
+                <div class="content-con content-con-first">
+                    <h2 class="content-title">其他工具<span class="content-title-des"></span></h2>
+                    <ul class="content-link">
+                                            <li>
+                              <h3><div><a href="http://jmeter.apache.org/" target="_blank" class="text-con" _itemid="2" title="JMeter">JMeter</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" class="text-con" _itemid="1" title="ApacheBench">ApacheBench</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.abtester.cn/" target="_blank" class="text-con" _itemid="3" title="ABTester">ABTester</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://www.mturk.com/mturk/welcome" target="_blank" class="text-con" _itemid="4" title="Amzon Mturk">Amzon Mturk</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://abtests.de/" target="_blank" class="text-con" _itemid="5" title="A/B Testing">A/B Testing</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.google.com/analytics/features/content.html" target="_blank" class="text-con" _itemid="6" title="Google Analytics Content Experiments">Google Analytics Content Experiments</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://github.com/gregdingle/genetify/wiki" target="_blank" class="text-con" _itemid="7" title="Genetify">Genetify</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.kameleoon.com/" target="_blank" class="text-con" _itemid="8" title="Kameleoon">Kameleoon</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://www.optimizely.com/" target="_blank" class="text-con" _itemid="9" title="Optimizely">Optimizely</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://github.com/seatgeek/sixpack" target="_blank" class="text-con" _itemid="10" title="Sixpack">Sixpack</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://drpete.co/split-test-calculator" target="_blank" class="text-con" _itemid="11" title="Split Test">Split Test</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://vanity.labnotes.org/" target="_blank" class="text-con" _itemid="12" title="Vanity">Vanity</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.bingocardcreator.com/abingo" target="_blank" class="text-con" _itemid="13" title="A/Bingo">A/Bingo</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://usabilityhub.com" target="_blank" class="text-con" _itemid="14" title="Usabilityhub">Usabilityhub</a></div></h3>
+                            </li>
+
+                            <li>
+                              <h3>
+                                    <div>
+                                        <a href="https://www.hellobar.com/" target="_blank" class="text-con" _itemid="555" title="Hello Bar">Hello Bar
+                                            <img style="width: 28px; margin-left: 2px;vertical-align: text-bottom;" src="./img/new.png" >
+                                        </a>
+                                    </div>
+                              </h3>
+                            </li>
+
+
+                            <li>
+                              <h3><div><a href="http://i.amap.com/" target="_blank" class="text-con" _itemid="1903" title="高德指数">高德指数</a></div></h3>
+                            </li>
+                                        <li>
+                              <h3><div><a href="http://www.convert.com/" target="_blank" class="text-con" _itemid="15" title="Convert">Convert</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.crazyegg.com/#." target="_blank" class="text-con" _itemid="16" title="Crazy Egg">Crazy Egg</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.kameleoon.com/en/pricing.html" target="_blank" class="text-con" _itemid="17" title="Kameleoon">Kameleoon</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.hubspot.com/pricing" target="_blank" class="text-con" _itemid="18" title="Hubspot">Hubspot</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://www.optimizely.com/" target="_blank" class="text-con" _itemid="19" title="Optimizely Enterprise">Optimizely Enterprise</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://vwo.com/" target="_blank" class="text-con" _itemid="20" title="Vwo">Vwo</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://splitforce.com/" target="_blank" class="text-con" _itemid="21" title="Splitforce">Splitforce</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://unbounce.com/" target="_blank" class="text-con" _itemid="22" title="Unbounce">Unbounce</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://usabilityhub.com/pricing" target="_blank" class="text-con" _itemid="23" title="Usabilityhub">Usabilityhub</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.vertster.com/" target="_blank" class="text-con" _itemid="24" title="Vertster">Vertster</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="https://www.kissmetrics.com/" target="_blank" class="text-con" _itemid="25" title="KISSmetrics">KISSmetrics</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.appadhoc.com" target="_blank" class="text-con" _itemid="1412" title="AppAdhoc A/B Testing">AppAdhoc A/B Testing</a></div></h3>
+                            </li>
+                                            <li>
+                              <h3><div><a href="http://www.appadhoc.com/" target="_blank" class="text-con" _itemid="1450" title="吆喝科技">吆喝科技</a></div></h3>
+                            </li>
+                                    </ul>
+                </div>
+            </div>
+
+        <div id="ft">
+            <p>联系我们：质量管理部 石岩 shiyanv@yonyou.com</p>
+        </div>
+
+        <!--导入的插件-->
+        <script type="text/javascript" src="select2/jquery-3.2.1.min.js" ></script>
+        <script type="text/javascript" src="select2/select2.full.min.js"></script>
+        <script type="text/javascript" src="select2/zh-CN.js"></script>
+        <script type="text/javascript">
+        $('.js-example-basic-single').select2();
+        $("#search").click(function(){
+            var href = $('.js-example-basic-single').val();
+            if(href == "yongyoupingtai" || href == "guanligongju" || href == "ceshigongju" || href == "zidonghuagongju"
+                || href == "jiankonggongju" || href == "anquangongju"|| href == "youkongjianfaban" || href == "xuexiziliao"
+                || href == "qitagongju"
+                ){
+                window.location.hash=href;
+            }else{
+                /*window.location.href=href;*/
+                window.open(href);
+            }
+        });
+        $(".banner").bind("keydown",function(e){
+        　　// 兼容FF和IE和Opera
+        　　var theEvent = e || window.event;
+        　　var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        　　 if (code == 13) {
+        　　//回车执行查询
+        　　$("#search").click();
+        　　}
+        });
+        </script>
+    </div>
+    <!--div结束-->
+</body>
+</html>

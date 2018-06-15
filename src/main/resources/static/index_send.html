@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SOCKET.IO DEMO</title>
+    <base>
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script src="./js/socket.io.js"></script>
+    <!--<script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>-->
+</head>
+
+<body>
+<!--<a href="#"><img src='./images/i09.png' onclick="sendMessage()" /></a>-->
+
+<a href="#" onclick="openSeatReal()">aaaa</a>
+
+</body>
+<script type="text/javascript">
+
+    var wjyy = 0;
+    var fsr = 0;
+    var fwtd = 0;
+//    var data = {
+//        url:"<%=basePath%>/c.html?wjyy="+ wjyy +"&fsr="+ fsr +"&fwtd="+ fwtd,
+//        flush:true
+//    }
+
+    //和平安约定好：url和ctiCode
+    var url = "";
+    var ctiCode = "";
+
+    var url=GetQueryString("url");
+    if(url !=null && url.toString().length>=1)
+    {
+        console.log(url);
+    }
+    var ctiCode=GetQueryString("ctiCode");
+    if(ctiCode !=null && ctiCode.toString().length>=1)
+    {
+        console.log(url);
+    }else{
+//        ctiCode = "106";
+        ctiCode = "notice_" + Math.floor(Math.random()*1000);
+    }
+
+
+    var socket;
+    connect();
+    function connect() {
+//        socket = io.connect('http://127.0.0.1:7905?ctiCode=' + ctiCode);
+//        socket = io.connect('http://10.137.87.168:7903?ctiCode=' + ctiCode);
+        socket = io.connect('http://10.0.0.222:7903?ctiCode=' + ctiCode);
+        $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
+
+        socket.on('connect', function () {
+            console.log("连接成功");
+//            serverOutput('<span class="connect-msg">欢迎光临!</span>');
+//            socket.emit('chatevent', {
+//                userId: 1,
+//                userName: $("#name").val(),
+//                receiveUserId: 2,
+//                content: "已上线!"
+//            });
+        });
+
+//        socket.on('chatevent', function (data) {mvn
+//            output('<span class="username-msg">'+
+//                data.userName + ' : </span>' +
+//                data.content);
+//        });
+
+        socket.on('disconnect', function (data) {
+            console.log('server reply connect:',"下线！");
+        });
+
+        socket.on('connect_msg',function(data){
+            console.log('server reply connect:',data);
+        });
+
+        socket.on('notice_event',function(data){
+
+            console.log(data.wjyyNum);
+            console.log(data.fsrNum);
+            console.log(data.fwtdNum);
+            console.log(data.ctiCode);
+            console.log(data.tipUrl);
+
+            data.wjyyNum += wjyy;
+            data.fsrNum += fsr;
+            data.fwtdNum += fwtd;
+            url = data.tipUrl;
+
+            sendMessage(data);
+            console.log('server reply connect:',"收到redis的消息!");
+        });
+    }
+
+    function sendDisconnect() {
+        socket.emit('chatevent', {
+            userId: 1,
+            userName: $("#name").val(),
+            receiveUserId: 2,
+            content: "已下线!"
+        });
+        socket.disconnect();
+    }
+
+
+    function sendMessage(data) {
+        var data1 = {
+            tipUrl: data.tipUrl + "/c.html?wjyy="+ data.wjyyNum +"&fsr="+ data.fsrNum +"&fwtd="+ data.fwtdNum
+        }
+
+        CD.CURRENT_SYSTEM = "PAGE-CM_VOICE";
+        console.log(CD.CURRENT_SYSTEM);
+
+        var thisMesg = new Mesg("req", "COMM", "PAGE-CM_VOICE", data1);
+        CD.sendMessage(thisMesg, window.top);
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+//    http://localhost:8080/pingan_sap/externalLoginLocal1?ctiCode=AS100
+    function openSeatReal() {
+//        window.open(url + "/history/historyPageRealTime", 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+        window.open(url + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+        var wjyy = 0;
+        var fsr = 0;
+        var fwtd = 0;
+    }
+
+
+</script>
+
+</html>
