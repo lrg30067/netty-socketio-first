@@ -54,9 +54,9 @@
 
         socket.on('disconnect', function (data) {
             console.log('server reply connect:',"下线！");
-            this.wjyy = 0;
-            this.fsr = 0;
-            this.fwtd = 0;
+            wjyy = 0;
+            fsr = 0;
+            fwtd = 0;
         });
 
         socket.on('connect_msg',function(data){

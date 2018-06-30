@@ -9,7 +9,7 @@
     <script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
 </head>
 <body>
-    <a href="###" onclick="openSeatReal()" style="width:40px;height:40px;display:inline-block;text-indent:-9999px">pingan</a>
+    <a href="###" onclick="openSeatReal()" style="">pingan</a>
 </body>
 <script type="text/javascript">
 
@@ -38,8 +38,8 @@
     var socket;
     connect();
     function connect() {
-      socket = io.connect('http://NETS-ITSADMIN-YDHW-TEST-SERVER2.paic.com.cn:8080?ctiCode=' + ctiCode);
-      //socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
+      //socket = io.connect('http://NETS-ITSADMIN-YDHW-TEST-SERVER2.paic.com.cn:8080?ctiCode=' + ctiCode);
+      socket = io.connect('http://10.137.87.229:8080?ctiCode=' + ctiCode);
         $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
 
         socket.on('connect', function () {
@@ -68,6 +68,7 @@
             console.log(data.wjyyNum);
             console.log(data.fsrNum);
             console.log(data.fwtdNum);
+            console.log(data.ctiCode);
             console.log(data.tipUrl);
 
             wjyy = wjyy + data.wjyyNum;
@@ -78,9 +79,10 @@
             data.fsrNum = fsr;
             data.fwtdNum = fwtd;
 
-            sendMessage(data);
+            //sendMessage(data);
             console.log(data);
             console.log('server reply connect:',"收到redis的消息!");
+
         });
     }
 
@@ -130,13 +132,13 @@
             if(platformCode == "XQD-SHW")
             {
                 winObj = window.open("http://nets-itsadmin-shydhw-test1.paic.com.cn:18080/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
-                closeMessage();
+                //closeMessage();
                 socket.disconnect();
             }
             else if(platformCode == "XQD-ZHW")
             {
-                winObj = window.open("http://nets-itsadmin-ydhw-test-yyfx.paic.com.cn:8080/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
-                closeMessage();
+                winObj = window.open("http://10.137.87.168:9030/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+                //closeMessage();
                 socket.disconnect();
             }else
             {
@@ -148,10 +150,10 @@
     var loop = setInterval(function() {
         if(winObj){ 
             if(winObj.closed) {
-                if (statusFlag == 1){
-                    statusFlag = 0;
-                    connect();
-                }
+              if(statusFlag == 1){
+                 statusFlag = 0;
+                 connect();
+              }   
             }
         }    
     }, 500);
