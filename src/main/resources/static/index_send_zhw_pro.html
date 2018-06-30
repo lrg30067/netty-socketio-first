@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>NOTICE</title>
+    <base>
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script src="./js/socket.io.js"></script>
+    <script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
+</head>
+<body>
+    <a href="###" onclick="openSeatReal()" style="width:40px;height:40px;display:inline-block;text-indent:-9999px">pingan</a>
+</body>
+<script type="text/javascript">
+
+    var wjyy = 0;
+    var fsr = 0;
+    var fwtd = 0;
+
+    //接受请求url的ctiCode值
+
+    var ctiCode = "";
+    ctiCode=GetQueryString("ctiCode");
+    if(ctiCode !=null && ctiCode.toString().length>=1)
+    {
+        console.log(ctiCode);
+    }else{
+        ctiCode = "106";
+    }
+
+    var platformCode = "";
+    platformCode=GetQueryString("platformCode");
+    if(platformCode !=null && platformCode.toString().length>=1)
+    {
+        console.log(platformCode);
+    }
+
+    var socket;
+    connect();
+    function connect() {
+      socket = io.connect('http://NETS-ITSADMIN-YDHW-TEST-SERVER2.paic.com.cn:8080?ctiCode=' + ctiCode);
+      //socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
+        $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
+
+        socket.on('connect', function () {
+            console.log("连接成功");
+            socket.emit('chatevent', {
+                userId: 1,
+                userName: 'menghaonan',
+                receiveUserId: 2,
+                content: "已上线!"
+            });
+        });
+
+        socket.on('disconnect', function (data) {
+            console.log('server reply connect:',"下线！");
+            this.wjyy = 0;
+            this.fsr = 0;
+            this.fwtd = 0;
+        });
+
+        socket.on('connect_msg',function(data){
+            console.log('server reply connect:',data);
+        });
+
+        socket.on('notice_event',function(data){
+
+            console.log(data.wjyyNum);
+            console.log(data.fsrNum);
+            console.log(data.fwtdNum);
+            console.log(data.tipUrl);
+
+            wjyy = wjyy + data.wjyyNum;
+            fsr = fsr + data.fsrNum;
+            fwtd = fwtd + data.fwtdNum;
+
+            data.wjyyNum = wjyy;
+            data.fsrNum = fsr;
+            data.fwtdNum = fwtd;
+
+            sendMessage(data);
+            console.log(data);
+            console.log('server reply connect:',"收到redis的消息!");
+        });
+    }
+
+    function sendDisconnect() {
+        socket.emit('chatevent', {
+            userId: 1,
+            userName: $("#name").val(),
+            receiveUserId: 2,
+            content: "已下线!"
+        });
+        socket.disconnect();
+    }
+
+
+    function sendMessage(data) {
+        CD.CURRENT_SYSTEM = "PAGE-CM_VOICE";
+        var data1 = {
+            tipUrl: data.tipUrl + "/c.html?wjyy="+ data.wjyyNum +"&fsr="+ data.fsrNum +"&fwtd="+ data.fwtdNum,
+            id: "PAGE_CM_VOICE"
+        }
+        var thisMesg = new Mesg("req", "COMM", "compentTipDialog", data1);
+        CD.sendMessage(thisMesg, window.top);
+    }
+
+    function closeMessage() {
+        CD.CURRENT_SYSTEM = "PAGE-CM_VOICE";
+        var data1 = {
+            iframeId: "componentTipDiv"
+        }
+        var thisMesg = new Mesg("req", "COMM", "iframeClose", data1);
+        CD.sendMessage(thisMesg, window.top);
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+
+    var winObj;
+    var statusFlag;
+    function openSeatReal() {
+        statusFlag = 1;
+        if(platformCode){
+            if(platformCode == "XQD-SHW")
+            {
+                winObj = window.open("http://nets-itsadmin-shydhw-test1.paic.com.cn:18080/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+                closeMessage();
+                socket.disconnect();
+            }
+            else if(platformCode == "XQD-ZHW")
+            {
+                winObj = window.open("http://nets-itsadmin-ydhw-test-yyfx.paic.com.cn:8080/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+                closeMessage();
+                socket.disconnect();
+            }else
+            {
+                alert("你的功能尚未开通，敬请期待！ ");
+                return;
+            }
+        }
+    }
+    var loop = setInterval(function() {
+        if(winObj){ 
+            if(winObj.closed) {
+                if (statusFlag == 1){
+                    statusFlag = 0;
+                    connect();
+                }
+            }
+        }    
+    }, 500);
+
+
+</script>
+
+</html>
