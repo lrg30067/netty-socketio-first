@@ -6,10 +6,11 @@
     <base>
     <script src="./js/jquery-1.11.1.min.js"></script>
     <script src="./js/socket.io.js"></script>
-    <script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
+    <script src="./js/json2.js"></script>
+    <script src="http://pad-tmr-life.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
 </head>
 <body>
-    <a href="###" onclick="openSeatReal()" style="width:40px;height:40px;display:inline-block;text-indent:-9999px">pingan</a>
+    <a href="###" onclick="openSeatReal()" style="">pingan</a>
 </body>
 <script type="text/javascript">
 
@@ -38,8 +39,18 @@
     var socket;
     connect();
     function connect() {
-      //socket = io.connect('http://nets-itsadmin-shydhw-test1.paic.com.cn:7903?ctiCode=' + ctiCode);
-      socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
+      //socket = io.connect('http://NETS-ITSADMIN-YDHW-TEST-SERVER2.paic.com.cn:8080?ctiCode=' + ctiCode);
+        if(platformCode){
+            if(platformCode == "XQD-SHW")
+            {
+                socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
+            }
+            else if(platformCode == "XQD-ZHW")
+            {
+                socket = io.connect('http://10.137.87.229:8080?ctiCode=' + ctiCode);
+            }
+        }
+
         $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
 
         socket.on('connect', function () {
@@ -68,6 +79,7 @@
             console.log(data.wjyyNum);
             console.log(data.fsrNum);
             console.log(data.fwtdNum);
+            console.log(data.ctiCode);
             console.log(data.tipUrl);
 
             wjyy = wjyy + data.wjyyNum;
@@ -78,9 +90,10 @@
             data.fsrNum = fsr;
             data.fwtdNum = fwtd;
 
-            sendMessage(data);
+            //sendMessage(data);
             console.log(data);
             console.log('server reply connect:',"收到redis的消息!");
+
         });
     }
 
@@ -122,21 +135,32 @@
     }
 
 
-    var winObj;
     var statusFlag;
+    function openwindow(url,name,iWidth,iHeight)
+    {
+        var url;                            //转向网页的地址;
+        var name;                           //网页名称，可为空;
+        var iWidth;                         //弹出窗口的宽度;
+        var iHeight;                        //弹出窗口的高度;
+        //window.screen.height获得屏幕的高，window.screen.width获得屏幕的宽
+        var iTop = (window.screen.height-30-iHeight)/2;       //获得窗口的垂直位置;
+        var iLeft = (window.screen.width-10-iWidth)/2;        //获得窗口的水平位置;
+        window.open(url,name,'height='+iHeight+',,innerHeight='+iHeight+',width='+iWidth+',innerWidth='+iWidth+',top='+iTop+',left='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+
     function openSeatReal() {
         statusFlag = 1;
         if(platformCode){
             if(platformCode == "XQD-SHW")
             {
-                winObj = window.open("http://192.168.50.124:9050/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
-                closeMessage();
+                openwindow("http://192.168.50.124:9050/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+                //closeMessage();
                 socket.disconnect();
             }
             else if(platformCode == "XQD-ZHW")
             {
-                winObj = window.open("http://nets-itsadmin-ydhw-test-yyfx.paic.com.cn:8080/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
-                closeMessage();
+                openwindow("http://10.137.87.168:9030/pingan_sap/" + "externalLoginLocal1?ctiCode=" + ctiCode, 'newwindow', 'height=700, width=1200, top=150, left=200, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+                //closeMessage();
                 socket.disconnect();
             }else
             {
@@ -145,17 +169,14 @@
             }
         }
     }
-    var loop = setInterval(function() {
-        if(winObj){ 
-            if(winObj.closed) {
-                if (statusFlag == 1){
-                    statusFlag = 0;
-                    connect();
-                }
-            }
-        }    
-    }, 500);
 
+    function closewindow()
+    {
+        if (statusFlag == 1){
+            statusFlag = 0;
+            connect();
+        }
+    }
 
 </script>
 
