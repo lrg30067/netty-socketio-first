@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="./css/button.css">
 
     <script src="./js/jquery-1.11.1.min.js"></script>
-    <script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
+    <!--<script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>-->
+    <script src="http://pad-tmr-life.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
 </head>
 <script>
 
@@ -55,40 +56,38 @@
     setTimeout("fwtdvalue()","10");
 
 
-    //当页面的关闭的时候,执行的方法
-    window.onbeforeunload = function(){
-        window.opener.closewindow();
-    }
-
-</script>
+    //子页面关闭时，调用父页面的方法，当页面的关闭的时候,执行的方法
+//    window.onbeforeunload = function(){
+//        window.opener.closewindow();
+//    }
 </script>
 
 <body>
-<div>
-    <!-- http://localhost:8080/pingan_sap/c.html?wjyy=5&fsr=2&fwtd=7 -->
+    <div>
+        <!-- http://localhost:8080/pingan_sap/c.html?wjyy=5&fsr=2&fwtd=7 -->
 
-    <table>
-        <p style="margin:5px 0 5px 0">
-            您当前通话存在以下违规风险
-            <button class="button button-caution button-pill button-tiny" style="margin-left: 33px;width: 54px;text-align:center;padding:0px;" onclick="closeMessage()">清除</button>
-        </p>
-        <tr>
-            <td rowspan="4" width="20%"><img src='./images/i09.png' onclick="closeMessage()" /></td>
-            <td colspan="2" width="80%"></td>
-        </tr>
-        <tr>
-            <td><font>【违禁用语】</font></td>
-            <td ><a href="#" ><button id="wjyy" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
-        </tr>
-        <tr>
-            <td><font>【防骚扰】</font></td>
-            <td ><a href="#" ><button id="fsr" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
-        </tr>
-        <tr>
-            <td><font>【服务态度】</font></td>
-            <td ><a href="#" ><button id="fwtd" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
-        </tr>
-    </table>
-</div>
+        <table>
+            <p style="margin:5px 0 0 0">
+                您当前通话存在以下违规风险
+                <button class="button button-caution button-pill button-tiny" style="margin-left: 33px;width: 54px;text-align:center;padding:0px;" onclick="closeMessage()">清除</button>
+            </p>
+            <tr>
+                <td rowspan="4" width="20%"><img src='./images/i09.png' onclick="closeMessage()" /></td>
+                <td colspan="2" width="80%"></td>
+            </tr>
+            <tr>
+                <td><font>【违禁用语】</font></td>
+                <td ><a href="#" ><button id="wjyy" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+            </tr>
+            <tr>
+                <td><font>【防骚扰】</font></td>
+                <td ><a href="#" ><button id="fsr" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+            </tr>
+            <tr>
+                <td><font>【服务态度】</font></td>
+                <td ><a href="#" ><button id="fwtd" class="button button-caution button-pill button-tiny" val="0">0</button></a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

@@ -70,7 +70,7 @@ public class NoticeEventHandler {
                 Object object = params.get("ctiCode");
                 String ctiCode = "";
                 if (object != null) {
-                    ctiCode = ((List<String>) object).get(0);
+                    ctiCode = ((List<String>) object).get(0).replaceAll("[a-zA-Z]","" );
                     //将uuid和连接客户端对象进行绑定
                     clientsMap.put(sessionId, client);
 
