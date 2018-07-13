@@ -194,6 +194,12 @@
 			<artifactId>jsch</artifactId>
 			<version>0.1.54</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.4.11</version>
+			<type>pom</type>
+		</dependency>
 
 
 	</dependencies>

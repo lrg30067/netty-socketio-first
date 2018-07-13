@@ -61,7 +61,7 @@
         });
 
         socket.on('connect_msg',function(data){
-            console.log('server reply connect:',data);
+            //console.log('server reply connect:',data);
         });
 
         socket.on('notice_event',function(data){
@@ -100,7 +100,7 @@
         CD.CURRENT_SYSTEM = "PAGE-CM_VOICE";
         var data1 = {
             tipUrl: data.tipUrl + "/c.html?wjyy="+ data.wjyyNum +"&fsr="+ data.fsrNum +"&fwtd="+ data.fwtdNum,
-            id: "PAGE_CM_VOICE"
+            id: "PAGE_CM_SINOVOICE_ASR"
         }
         var thisMesg = new Mesg("req", "COMM", "compentTipDialog", data1);
         CD.sendMessage(thisMesg, window.top);
