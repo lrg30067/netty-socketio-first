@@ -10,7 +10,7 @@
     <script src="http://pad-tmr-life.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>
 </head>
 <body>
-    <a href="###" onclick="openSeatReal()" style="width:40px;height:40px;display:block;text-indent:-9999px">pingan</a>
+<a href="###" onclick="openSeatReal()" style="width:40px;height:40px;display:block;text-indent:-9999px">pingan</a>
 </body>
 <script type="text/javascript">
 
@@ -38,9 +38,10 @@
 
     var socket;
     connect();
+    //if(ctiCode == "YDW106"){ connect();}
     function connect() {
-      socket = io.connect('http://nets-itsadmin-shydhw-test1.paic.com.cn:7903?ctiCode=' + ctiCode);
-      //socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
+        socket = io.connect('http://nets-itsadmin-shydhw-test1.paic.com.cn:7903?ctiCode=' + ctiCode);
+        //socket = io.connect('http://192.168.50.124:7903?ctiCode=' + ctiCode);
         $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
 
         socket.on('connect', function () {

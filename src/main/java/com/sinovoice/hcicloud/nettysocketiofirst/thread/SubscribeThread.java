@@ -7,7 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-
+/**
+ * 2018年9月28日 21:13:06
+ * 升级到 3.0 版本，这个版本就废弃了
+ */
 public class SubscribeThread implements Runnable {
 
     //日志

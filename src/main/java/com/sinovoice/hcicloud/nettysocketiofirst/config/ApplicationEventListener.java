@@ -13,7 +13,7 @@ import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.ContextStoppedEvent;
 
 public class ApplicationEventListener implements ApplicationListener<ApplicationEvent> {
-	
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	public void onApplicationEvent(ApplicationEvent event) {

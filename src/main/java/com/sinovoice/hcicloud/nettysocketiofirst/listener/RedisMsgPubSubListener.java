@@ -8,7 +8,10 @@ import redis.clients.jedis.JedisPubSub;
 
 import java.util.UUID;
 
-
+/**
+ * 2018年9月28日 21:13:06
+ * 升级到 3.0 版本，这个版本就废弃了
+ */
 public class RedisMsgPubSubListener extends JedisPubSub{
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(RedisMsgPubSubListener.class);

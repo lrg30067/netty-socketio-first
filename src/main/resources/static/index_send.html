@@ -8,7 +8,7 @@
     <script src="./js/jquery-1.11.1.min.js"></script>
     <script src="./js/socket.io.js"></script>
     <!--<script src="./js/socket.io.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.0.6/socket.io.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.0.6/socket.io.js"></script>-->
     <!--<script src="http://pad-tmr-stg2.paic.com.cn/pad-tmr/assets/lib/cross-domain/cross-domain.js"></script>-->
 </head>
 
@@ -52,7 +52,8 @@
     function connect() {
 //        socket = io.connect('http://127.0.0.1:7905?ctiCode=' + ctiCode);
 //        socket = io.connect('http://10.137.87.168:7903?ctiCode=' + ctiCode);
-        socket = io.connect('http://10.0.1.227:7905?ctiCode=' + ctiCode);
+//        socket = io.connect('http://10.0.1.227:7905?ctiCode=' + ctiCode);
+        socket = io.connect('http://10.0.0.222:7903?ctiCode=' + 106);
         $("#name").val("访客" + parseInt(Math.random() * 100 + 1, 10));
 
         socket.on('connect', function () {
@@ -93,7 +94,7 @@
             data.fwtdNum += fwtd;
             url = data.tipUrl;
 
-            sendMessage(data);
+//            sendMessage(data);
             console.log('server reply connect:',"收到redis的消息!");
         });
     }

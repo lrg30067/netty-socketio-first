@@ -77,7 +77,7 @@ public class NettySocketConfig {
                 // String token = data.getSingleUrlParam("token");
                 // String username = JWTUtil.getSocketUsername(token);
                 // return JWTUtil.verifySocket(token, "secret");s
-                log.info(String.format("认证成功，远程地址为：%s", data.getAddress()));
+//                log.info(String.format("认证成功，远程地址为：%s", data.getAddress()));
                 return true;
             }
         });
@@ -99,9 +99,9 @@ public class NettySocketConfig {
         final SocketIOServer server = new SocketIOServer(config);
 
         //添加实例监听器,全部客户端
-        ChateventListener listner = new ChateventListener();
-        listner.setServer(server);
-        server.addEventListener("chatevent", Msg.class, listner);
+        ChateventListener listener = new ChateventListener();
+        listener.setServer(server);
+        server.addEventListener("chatevent", Msg.class, listener);
 
 
         return server;

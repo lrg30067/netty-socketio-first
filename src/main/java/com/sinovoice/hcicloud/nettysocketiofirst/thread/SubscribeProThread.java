@@ -9,7 +9,10 @@ import redis.clients.jedis.Jedis;
 
 import java.util.concurrent.Callable;
 
-
+/**
+ * 2018年9月28日 21:13:06
+ * 升级到 3.0 版本，这个版本就废弃了
+ */
 public class SubscribeProThread implements Callable<Integer> {
 
     //日志

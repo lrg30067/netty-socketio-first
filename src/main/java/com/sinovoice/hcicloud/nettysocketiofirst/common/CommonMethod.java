@@ -10,7 +10,6 @@ import org.apache.commons.httpclient.methods.ByteArrayRequestEntity;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import org.apache.commons.lang.time.StopWatch;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
@@ -56,9 +55,7 @@ public class CommonMethod {
 			e.printStackTrace();
 		} // 发出请求
 		int stateCode = 0;
-		StopWatch stopWatch = new StopWatch();
 		try {
-			stopWatch.start();
 			stateCode = client.executeMethod(method);
 		} catch (HttpException e) {
 			throw e;
@@ -67,7 +64,6 @@ public class CommonMethod {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			stopWatch.stop();
 			if (stateCode == HttpStatus.SC_OK) {
 				try {
 					result = method.getResponseBodyAsString();
@@ -300,7 +296,7 @@ public class CommonMethod {
 		return sb.toString();
 	}
 
-	//TODO 成功单话者分离测试
+	//成功单话者分离测试
 //	public static void main(String[] args){
 //		String userPhone = "550-4320-C,4510-5060-A,5310-12760-C,13010-14840-A,15250-16100-C,16530-19660-A,19890-21540-C,21730-27040-A,27250-28620-C,28890-31280-A,31970-32300-C,33090-34160-A,34310-34640-C,60010-60760-C,84410-85540-C,160390-161080-C,161730-164520-C,165890-166450-C,166450-172860-A,173310-173520-C,173930-178860-A,179190-180000-C,180650-184540-A,185150-186740-C";
 //		String callContent = "哎喂哎你好卢先生哎你好☆你好☆呃这边的话之前给您支付的时候看到您这个单当天的这个交易限额超限了您需要改成这个☆建行的信用卡来缴费是吧☆嗯对是☆好行那您稍等一下我帮您切入到这个信用卡☆这个支付系统里面☆那的话是需要您把信用卡带着身边输入信用卡卡号有效期和安全验证码的☆总共有五个操作步骤☆稍后呢您根据系统提示来完成好吗☆好的☆好的那您稍等☆嗯☆嗯☆嗯☆喂你好☆嗯你好嗯帮您确认一下您稍等☆好的更☆你你已经缴费成功了稍后的话呢扣费短信和同样的承保信息也会发到您手机上的刘先生☆嗯☆好行那这边也就不多耽误您的时间了有问题您联系畅通就可以了☆嗯好的☆好祝您平安您需要我们的保障给宝贝送学生幸福再见☆嗯再见嗯好☆";

@@ -18,15 +18,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
-@Component
-@Configuration
+/**
+ * 目前这个类已经下线了，2018年9月11日 20:51:10
+ */
+//@Component
+//@Configuration
 public class NoticeEventHandler {
 
     private static final Logger log = LoggerFactory.getLogger(NoticeEventHandler.class);
     private final SocketIOServer server;
 
     private static ExecutorService exec = Executors.newCachedThreadPool();
-//    private static ExecutorService exec = Executors.newFixedThreadPool(2000);
 
 
     @Value("${netty_server_tip_url}")
